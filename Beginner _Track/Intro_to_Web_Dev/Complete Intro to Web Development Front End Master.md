@@ -61,7 +61,7 @@ this-is-kebab-case
 - HTML Basic Framework
 
 ```html
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <!-- this tells us you're working with the latest version of HTML and is always the first line of HTML code-->
 <html lang="en">
 <!-- html tag basically tells us the begining and end of your HTML doc -->
@@ -85,3 +85,139 @@ this-is-kebab-case
 <style></style>
 
 ```
+
+# CSS Notes
+
+- CSS is a series of rules. Essentially, **if this condition is true, set these styles.**
+- If you don't specify the length, the following take the whole line: h1 to h6, p, div.
+- **Classes can be used to style the same tags.**
+- The way to differentiate between a tag and a class is using a period.
+
+```css
+.branding {
+/* The set of rules in this section refers to a class named branding */
+}
+```
+
+- Generally, style on **classes!**
+- Styling on tags should only be done if you literally want every element on the page to be the same.
+- **What is the cascade?**
+    - Firstly, try to keep your CSS as simple as possible
+    - But what happens if two CSS classes have conflicting properties?
+
+    ```html
+    <style>
+    .title{
+    	color: red;
+    }
+
+    .title{
+    	color:green;
+    }
+    </style>
+
+    <h1 class="title other-title">Cool Title</h1>
+    ```
+
+    - In the code snippet above, the text "Cool Title" will be set to the colour green. The reason being, **when everything is said equal, the one that comes last WINS!**
+    - **Classes are more specfic than tags:**
+
+    ```html
+    <style>
+      .title-4 {
+        color: orange;
+      }
+
+      h1 {
+        color: green;
+      }
+    </style>
+    <h1 class="title-4">Another h1</h1>
+    ```
+
+    - The output of the above code will be "Another h1" because a class selector **overpowers a tag selector**.
+
+- To incorporate ID selectors in CSS, you use the '#' to set rules based off IDs. **ID selectors overpower class selectors.**
+
+```html
+<style type="text/css">
+  #site-brand {
+    color: red;
+  }
+
+  h1.nav-head.nav-main.other-useful-class {
+    /*
+     * this class is way too specific; never have a class selector so long
+     * it's ridiculous and just to illustrate a point
+     */
+    color: green;
+  }
+</style>
+<h1 id="site-brand" class="nav-head nav-main other-useful-class">The Brand of my Website</h1>
+
+/* Colour of sentence will be RED */
+```
+
+- Something that has a higher rank is the " !important ". **Avoid using! But this is an example:**
+
+```html
+<style>
+  #site-brand-2 {
+    color: red;
+    border: 1px solid red;
+  }
+
+  .nav-head-2 {
+    color: green !important;
+    border: 1px solid green;
+  }
+</style>
+<h1 id="site-brand-2" class="nav-head-2 nav-main-2 other-useful-class-2">The Brand of my Website</h1>
+
+/* Colour of sentence will be GREEN */
+```
+
+- Pseudoclasses are used based off how elements look on certain events. An example is the hover pseudoclass.
+- What is the wildcard selector?
+
+```html
+<style>
+* {
+	font-weight: bold;
+}
+</style>
+```
+
+- The '*' applies to the entire page.
+- CSS can also be used to layout the page differently. By default, display property for divs is set `block`
+- Padding refers to **inside the border**
+- margin: this is the space outside of the element between it and other elements. It is outside of the border
+- A typical box model looks like this:
+
+```css
+.example {
+  border: 3px solid red;
+  padding: 5px;
+  margin: 25px;
+  background-color: white;
+}
+```
+
+- One exception to using a selector tag is or box sizing:
+
+```css
+* {
+  box-sizing: border-box;
+}
+```
+
+- The above rule will make everything use the `border-box` sizing instead of the default one.
+- The order is **Height,** **Width, Padding, Border, and Margin**
+- Float doesn't allow a box/element to be above a box/element before it.
+- Some key Flex properties are flex-direction, justify-content (left & right adjustements), and align-items (top & bottom adjustments).
+- **With Flex, you're changing the parent container, not the child elements within it.**
+- The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines.
+
+## Effective Patterns for Writing CSS
+
+- If you do use the cascading function, make sure the rules are on the same file right after each other. So it's easier to read.
