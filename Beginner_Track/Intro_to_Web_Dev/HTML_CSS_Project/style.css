@@ -52,9 +52,13 @@ h2{
   border-top: 0px;
   border: 3px solid black;
   height:300px;
-  padding: 0;
-  margin:0;
-
+  margin:0px;
+  padding:0px;
+}
+.site-section{
+  display: flex;
+  align-items: center;
+  flex:1;
 }
 
 .quarter{
@@ -96,7 +100,7 @@ h2{
 
 li{
   list-style: none;
-  align-items: stretch;
+  align-items:stretch;
   height:20%
 }
 
