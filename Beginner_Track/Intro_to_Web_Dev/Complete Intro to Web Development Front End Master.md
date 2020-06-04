@@ -225,3 +225,7 @@ this-is-kebab-case
 - The HTML <section> element represents a standalone section — which doesn't have a more specific semantic element to represent it — contained within an HTML document. Typically, but not always, sections have a heading.
 
 - section and div are essentially the same thing but section has more meaning (documentation wise)
+
+_ A rule of thumb:
+	- Margins are used to spaced elements between each other
+	- Padding should be use to space things within the element.
