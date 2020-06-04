@@ -221,3 +221,7 @@ this-is-kebab-case
 ## Effective Patterns for Writing CSS
 
 - If you do use the cascading function, make sure the rules are on the same file right after each other. So it's easier to read.
+
+- The HTML <section> element represents a standalone section — which doesn't have a more specific semantic element to represent it — contained within an HTML document. Typically, but not always, sections have a heading.
+
+- section and div are essentially the same thing but section has more meaning (documentation wise)
