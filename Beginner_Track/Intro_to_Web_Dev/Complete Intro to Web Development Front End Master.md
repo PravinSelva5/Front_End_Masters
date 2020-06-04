@@ -226,6 +226,6 @@ this-is-kebab-case
 
 - section and div are essentially the same thing but section has more meaning (documentation wise)
 
-_ A rule of thumb:
+- A rule of thumb:
 	- Margins are used to spaced elements between each other
 	- Padding should be use to space things within the element.
