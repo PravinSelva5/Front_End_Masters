@@ -229,3 +229,235 @@ this-is-kebab-case
 - A rule of thumb:
 	- Margins are used to spaced elements between each other
 	- Padding should be use to space things within the element.
+
+
+# Javascript
+- Javascript is single-threaded. It has no way to preform concurrency
+
+```jsx
+const monthlyRent = 500;
+console.log(monthlyRent);
+
+const yearlyRent = monthlyRent * 12;
+console.log(yearlyRent);
+```
+
+- **const** means it's an unchanging value. You can't assign it another value unless you use **less.**
+- Javascript using **camelcasing** for naming variables.
+- You have to use "  `  " aka back-ticks to use template-strings :
+
+```jsx
+const firstName = "Brian";
+const lastName = "Holt";
+
+const sentence = "Hello " + firstName + " " + lastName + "! How are you!?";
+const sentenceWithTemplate = `Hello ${firstName} ${lastName}! How are you!?`;
+
+console.log(sentence);
+console.log(sentenceWithTemplate);
+```
+
+```xml
+Result
+
+"Hello Brian Holt! How are you!?"
+"Hello Brian Holt! How are you!?"
+undefined
+```
+
+- Control Flow in Javascript:
+
+```jsx
+const skyIsBlue = true;
+​
+if (skyIsBlue) {
+  console.log("The sky is blue!");
+} else {
+  console.log("The sky is … not blue?");
+}
+```
+
+- In Javascript, `=` is used to assign a value to a variable. Triple equals `===` is used to check if a value is **equal** to the value that's being compared. Double equals, `==` uses coercion to try and make the comparison true. For example, if you compared **an int 86 to a string '86'.**
+    - IF, ELSE-IF, ELSE:
+
+    ```jsx
+    const friendsAtYourParty = 10;
+    ​
+    if (friendsAtYourParty === 0) {
+      console.log("Cool, now I have a lot of nachos to myself.");
+    } else if (friendsAtYourParty >= 4) {
+      console.log("Perfect amount to play some Mario Kart.");
+    } else {
+      console.log("Wooooo turn on the dance music!");
+    }
+    ```
+
+- **LOOPS**
+
+```jsx
+let friendsAtYourParty = 0;
+while (friendsAtYourParty < 10) {
+  friendsAtYourParty = friendsAtYourParty + 1;
+}
+console.log(friendsAtYourParty);
+
+let friendsAtYourParty = 0;
+for (let i = 0; i <= 10; i++) {
+  friendsAtYourParty++;
+}
+console.log(friendsAtYourParty);
+```
+
+- **Iterative shortcuts**: `-=` (subtraction,) as well as `*=` (multiplication,) `/=` (division,) and `**=` (exponent)
+- **let has block level scope and var has function level scope.**
+    - It can be said that a variable declared with var is defined throughout the program **as compared to let.**
+- **FUNCTIONS**
+
+```jsx
+function addTwo(number) {
+  return number + 2;
+}
+
+const finalAnswer = addTwo(5);
+console.log(finalAnswer);
+```
+
+- **OBJECTS**
+
+```jsx
+const person = {
+  name: "Brian Holt",
+  city: "Seattle",
+  state: "WA",
+  favoriteFood: "🌮",
+  wantsTacosRightNow: true,
+  numberOfTacosWanted: 100
+};
+console.log(person);
+console.log(person.name);
+```
+
+- You can have an object within an object as well
+
+```jsx
+const person = {
+  name: "Brian Holt",
+  city: "Seattle",
+  state: "WA",
+  favoriteFood: "🌮",
+  wantsTacosRightNow: true,
+  numberOfTacosWanted: 100,
+	
+	address:{
+		street: "133 Place Road"
+		apt: "123"
+	}
+};
+console.log(person);
+console.log(person.name);
+console.log(person.address.street); //this is how you would call an object within an object
+```
+
+- Objects can also have their own functions within them:
+
+```jsx
+const dog = {
+  name: "dog",
+  speak() {
+    console.log("woof woof");
+  }
+};
+
+dog.speak();
+```
+
+- **CONTEXT**
+
+```jsx
+const me = {
+  name: {
+    first: "Brian",
+    last: "Holt"
+  },
+  location: {
+    streetNumber: 500,
+    street: "Fakestreet",
+    city: "Seattle",
+    state: "WA",
+    zipCode: 55555,
+    country: "USA"
+  },
+  getAddress() {
+    return `${this.name.first} ${this.name.last}
+${this.location.streetNumber} ${this.location.street}
+${this.location.city}, ${this.location.state} ${this.location.zipCode}
+${this.location.country}`;
+  }
+};
+
+console.log(me.getAddress());
+```
+
+- **this** refers to whatever object it is on. The general rule of thumb is, the closest object to the **this** refers to.
+- For the above code snippet, **this** refers to the **object me.**
+- If I just reference `this` from the outtermost layer, it'll be the global object, which in the browser is something called `window`. `window` already has a bunch of stuff on it. For example:
+- A good rule of thumb (that is unfortunately not always true) is that if you're inside an object of some sort, the `this` will be that object. If not, it'll be the global object, `window`.
+- **ARRAYS**
+- An **ordered collection of data. In contrast, an object is an un-ordered collection of data with keys and values.**
+
+```jsx
+const daysOfTheWeek = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
+];
+console.log(daysOfTheWeek);
+console.log(daysOfTheWeek[0]); // Monday
+console.log(daysOfTheWeek[1]); // Tuesday
+console.log(daysOfTheWeek[6]); // Sunday
+```
+
+- You can use `push` to add elements to the end of the array
+
+```jsx
+const courses = [
+  { teacher: "Kyle Simpson", course: "JS Function Lite" },
+  { teacher: "Sarah Drasner", course: "Intro to Vue" },
+  { teacher: "Brian Holt", course: "Complete Intro to React v3" },
+  { teacher: "Steve Kinney", course: "State Management" }
+];
+
+courses.push({ teacher: "Sean Larkinn", course: "Webpack" });
+
+console.log(courses);
+
+courses[2] = { teacher: "Brian Holt", course: "Complete Intro to React v4" }; // overwriting course name with this statement
+// could have also used courses[2].course = "Complete Intro to React v4"
+console.log(courses);
+```
+
+- To invidually log every element in an array:
+
+```jsx
+const cities = [
+  "Seattle",
+  "San Francisco",
+  "Salt Lake City",
+  "Amsterdam",
+  "Hong Kong"
+];
+
+// method 1
+for (let i = 0; i < cities.length; i++) {
+  console.log(cities[i]);
+}
+
+// method 2
+cities.forEach(function(city)) {
+  console.log(city);
+});
+```
