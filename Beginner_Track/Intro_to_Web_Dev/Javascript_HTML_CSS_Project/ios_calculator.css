@@ -1,0 +1,21 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.projectName{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 50px;
+    padding:10px;
+}
+
+.calculatorBody{
+    height: 500px;
+    width: 400px;
+    border: solid;
+    border-width: 1px;
+    margin: 0 auto;
+
+}
