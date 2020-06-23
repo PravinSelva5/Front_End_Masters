@@ -10,7 +10,7 @@ function buttonClick(value) {
     } else {
         handleNumber(value);
     }
-    rerender();
+    reRender();
 }
 
 function handleNumber(value) {
@@ -84,7 +84,7 @@ function handleSymbol(value) {
     }
 }
 
-function rerender() {
+function reRender() {
     screen.innerText = buffer;
 }
 

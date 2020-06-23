@@ -25,6 +25,11 @@
     background-color: black;
     width: 399px;
     height: 97px;
+    text-align: right;
+    color: white;
+    font-family: monospace;
+    padding: 20px;
+    font-size: 50px;
 }
 
 .calc-button-row {
