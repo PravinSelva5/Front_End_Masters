@@ -1,6 +1,6 @@
 let runningTotal = 0;
 let buffer = "0";
-let previousOperator;
+let previousOperator = null;
 const screen = document.querySelector(".screen");
 
 
@@ -14,7 +14,7 @@ function buttonClick(value) {
 }
 
 function handleNumber(value) {
-    if (buffer == "0") {
+    if (buffer === "0") {
         buffer = value;
     } else {
         buffer += value;
@@ -26,7 +26,6 @@ function handleMath(value) {
         // do nothing
         return;
     }
-
     const intBuffer = parseInt(buffer);
     if (runningTotal === 0) {
         runningTotal = intBuffer;
@@ -43,10 +42,10 @@ function flushOperation(intBuffer) {
         runningTotal += intBuffer;
     } else if (previousOperator === "-") {
         runningTotal -= intBuffer;
-    } else if (previousOperator === 'x') {
+    } else if (previousOperator === '×') {
         runningTotal *= intBuffer;
     } else {
-        runningTotal = (runningTotal / intBuffer);
+        runningTotal /= intBuffer;
     }
 }
 
@@ -55,18 +54,20 @@ function handleSymbol(value) {
         case "C":
             buffer = "0";
             runningTotal = "0";
+            previousOperator = null;
             break;
 
         case "=":
-            if (previousOperator == null) {
+            if (previousOperator === null) {
                 // you need two numbers for an output
                 return;
             }
             flushOperation(parseInt(buffer));
             previousOperator = null;
-            buffer = +runningTotal;
+            buffer = "" + runningTotal;
             runningTotal = 0;
             break;
+
         case "←":
             if (buffer.length === 1) {
                 buffer = "0";
@@ -75,10 +76,7 @@ function handleSymbol(value) {
             }
             break;
 
-        case "+":
-        case "-":
-        case "x":
-        case "+":
+        default:
             handleMath(value);
             break;
     }

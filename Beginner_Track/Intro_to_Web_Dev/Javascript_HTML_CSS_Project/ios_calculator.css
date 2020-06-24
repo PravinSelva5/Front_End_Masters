@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    background-color: grey;
+    background-color: #D3D3D3;
 }
 
 .projectName {
@@ -37,6 +37,7 @@
     align-content: stretch;
     height: 80.2px;
     cursor: pointer;
+    border: none;
 }
 
 .double {
@@ -71,4 +72,12 @@ button:last-child {
 button:hover {
     background: white;
     color: black;
+}
+
+button:active {
+    background-color: gray;
+}
+
+button:last-child:active {
+    background-color: #dd8d3d;
 }
