@@ -461,3 +461,187 @@ cities.forEach(function(city)) {
   console.log(city);
 });
 ```
+- **DOM (DATA OBJECT MODEL)**
+- The DOM is how javascript interacts with HTML & CSS.
+- `document` is a globally available variable in the browser that you use to interact with the HTML and CSS.
+- Example:
+
+```jsx
+<style>
+  .red-square {
+    width: 100px;
+    height: 100px;
+    background-color: crimson;
+  }
+</style>
+
+<div class="red-square"></div>
+
+<script>
+  const redSquare = document.querySelector('.red-square'); 
+// you can start manipulating the variable after assigning it to const redSquare
+  
+	redSquare.style.backgroundColor = 'green';
+</script>
+```
+
+- We called a method on `document`. `document` is a globally available variable in the browser that you use to interact with the HTML and CSS. It a lot of methods that you can use. In this case, we're using the `querySelector` in which you pass in a CSS selector and it returns to you the **first** one of that matches selector that it finds (if you have many of them on the page, you get just the first one.)
+- From there, we have a JavaScript pointer to the `div.red-square` tag stored in the `redSquare` variable which means we can start manipulating it.
+- We then use the `style` object which represents all the CSS styles that are being applied to that object at that time.
+- We then set the `backgroundColor` of that element. Notice it is `backgroundColor` and not `background-color` (camelCasing vs kebab-casing). This is how you interact with CSS via JavaScript. Anything that's kebab-cased like `padding-right` becomes camelCased, like `paddingRight`. While annoying, it'd be even more annoying if they didn't switch it since everything in JavaScript is camelCased.
+- We then just assign that to be whatever value we want. This works with any CSS property, eg: `tag.style.marginBottom = '50px'`.
+- An example of modifying mulitple items all at once:
+
+```jsx
+<ul>
+  <li class="js-target">Unchanged</li>
+  <li class="js-target">Unchanged</li>
+  <li>Won't Change</li>
+  <li class="js-target">Unchanged</li>
+  <li>Won't Change</li>
+  <li class="js-target">Unchanged</li>
+</ul>
+<script>
+  const elementsToChange = document.querySelectorAll('.js-target');
+  for (let i = 0; i < elementsToChange.length; i++) {
+    const currentElement = elementsToChange[i];
+    currentElement.innerText = "Modified by JavaScript!";
+  }
+</script>
+```
+
+**RESULT** 
+
+```
+Modified by JavaScript!
+Modified by JavaScript!
+Won't Change
+Modified by JavaScript!
+Won't Change
+Modified by JavaScript!
+```
+
+**EVENTS AND LISTENERS**
+
+- Evenets and listeners are used to make a webpage more reactive to the user. The following example creates a button named "Click Me". When it's clicked, a function is evoked,a pop up will appear saying "Hey There!".
+
+```jsx
+<button class="event-button">Click me!</button>
+<script>
+  const button = document.querySelector('.event-button');
+  button.addEventListener('click', function () {
+    alert("Hey there!");
+  });
+```
+
+**EVENT DELEGATION**
+
+- Instead of adding a bunch of event listeners on a bunch of elements you need to listen for, you can use **event bubbling.**
+    - You would be listening for an event in a parent container, if any one of the elements get clicked, the event that has been triggered will bubble up to the parent container.
+    - Example:
+
+    ```jsx
+    <div class="button-container">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+      <button>5</button>
+    </div>
+    <script>
+      document.querySelector('.button-container').addEventListener('click', function(event) {
+        if (event.target.tagName === 'button'){
+        	alert(`You clicked on button ${event.target.innerText}`);
+    	}	
+    		event.stopPropagation(); //this function's used to stop the event from bubbling further than the parent container
+      });
+    </script>
+    ```
+
+## AJAX
+
+- Asynchronous Javascript and XML
+- AJAX allows you to request more information from a server without refreshing it.
+
+```jsx
+const promise = fetch(DOG_URL); // the newer way to preform AJAX
+
+promise 
+	.then(function(response) {
+		const processingPromise = response.json();
+		return processingPromise;
+})
+	.then(function(processedResponse) {
+		console.log(processedResponse);
+});
+
+console.log("this will log first");
+```
+
+- What `fetch` returns is called a promise and it's similar to a callback that we used before. A promise, like callbacks, allows you to deal with things that don't happen immediately, things that are asynchronous. In this case, we're waiting for the API to respond with the information we asked for. It takes to request more information over the Internet and we don't want to hold up the rest of our code.
+- **JSON** stands for JavaScript Object Notation, and it's a very common way to exchange data over the Internet because it's machine readable but also pretty readable to humans.
+
+```jsx
+const DOG_URL = "https://dog.ceo/api/breeds/image/random";
+
+const promise = fetch(DOG_URL);
+const doggos = document.querySelector(".doggos");
+
+promise
+  .then(function(response) {
+    const processingPromise = response.json();
+    return processingPromise;
+  })
+  .then(function(processedResponse) {
+    const img = document.createElement("img");
+    img.src = processedResponse.message;
+    img.alt = "Cute doggo";
+    doggos.appendChild(img);
+  });
+```
+
+## Node.js [ PARCEL]
+
+- From a high-level, it's important to understand that node allows you to run javascript outside the browser.
+- Install node.js to your machine
+
+```xml
+npm install --global parcel-bundler
+```
+
+- Use the following code to create an npm project (-y forces the creating without answering any questions):
+
+```xml
+npm init -y
+```
+
+```xml
+npm install popmotion   //downloading dependencies 
+```
+
+- The following code will bundle the dependencies such as popmotion together and run a local server. Parcel looks for changes and will update itself when you make changes to your files.
+
+```xml
+parcel index.html
+```
+
+- You can also bundle together other js files with the `require` command. Example:
+
+```jsx
+require("./useless");
+```
+
+- There is a new way of doing modules, ES6 modules:
+
+```jsx
+import popmotion from "popmotion";
+import "./useless";
+
+// the old way was
+
+const popmotion = require("popmotion");
+require("./useless");
+```
+
+## Git and BASH
+
