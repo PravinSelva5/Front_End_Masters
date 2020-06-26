@@ -645,3 +645,29 @@ require("./useless");
 
 ## Git and BASH
 
+> Useful resource: [explainshell.co](http://explainshell.com/)m
+
+### Bash Commands
+
+- `cd` - change directory
+- `ls` - lists everything in the directory
+    - `ls -l` : the -l flag will give you the long output
+    - `ls -lah` : this will show you even the hidden files as well
+- `pwd` - print working directory
+- `man` - short for manual. When you want to exit it just press `q`
+- `mkdir` - creates a new directory
+- `touch` -  creates a new empty file where-ever you tell it to
+- `cat` - can be used to copy contents of a file to another file
+    - `cat index.html | pbcopy`
+- To exit vim about executing `vi fileName`
+    - `:q` will exit the file
+
+### Git
+
+- `git init` creates a new git repository
+- `git add` places changes to the staging area
+- `git status` shows you anything that has been modified or pushed to the staging area that hasn't been commited
+- `git commit -m "describe what changes you've made"` - commits any changes
+- `git log` will show your commit history
+
+> A good resource to check if you mess something up in your commits: [https://ohshitgit.com/](https://ohshitgit.com/)
