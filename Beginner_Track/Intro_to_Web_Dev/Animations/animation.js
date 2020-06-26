@@ -1,4 +1,6 @@
-const { styler, spring, listen, pointer, value } = window.popmotion;
+const popmotion = require("popmotion");
+require("./useless");
+const { styler, spring, listen, pointer, value } = popmotion;
 
 /* 
 The above is called de-structuring. It is the same as the following:
