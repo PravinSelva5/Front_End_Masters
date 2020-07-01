@@ -5,8 +5,7 @@ function addFavoriteBook(bookName) {
 }
 
 function printFavoriteBooks() {
-    console.log(`Favorite Books: ${favoriteBooks.length}
-    `);
+    console.log(`Favorite Books: ${favoriteBooks.length}`);
     for (let i = 0; i < favoriteBooks.length; i++) {
         console.log(favoriteBooks[i]);
 
