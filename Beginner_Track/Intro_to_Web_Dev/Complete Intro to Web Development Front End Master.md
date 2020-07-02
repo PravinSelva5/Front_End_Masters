@@ -671,3 +671,13 @@ require("./useless");
 - `git log` will show your commit history
 
 > A good resource to check if you mess something up in your commits: [https://ohshitgit.com/](https://ohshitgit.com/)
+
+
+
+
+
+## Inline vs Block ???
+- By default, every HTML element is either **inline or block**
+- If it's block, it essentially takes a paragraph break and pushes the result of the elements down
+- Inline elements, are placed beside each other
+- There is **inline-block**. It's useful in some situtations because **only block elements can get widths & heights**
